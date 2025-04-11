@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,21 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class HomePage {
+  numeros: number[] = [];
+  limite: number = 0;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
+  ionViewWillEnter() {
+    this.router.navigate(['/adivinha']);
+  }
+
+  gerarNumeros() {
+    this.numeros = [];
+    let i = 1;
+    while (i <= this.limite) {
+      this.numeros.push(i);
+      i++;
+    }
+  }
 }
